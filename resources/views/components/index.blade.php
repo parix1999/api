@@ -2,6 +2,6 @@
 
 @section('content')
 <div class="container">
-    <example-component /> 
+    <home-list /> 
 </div>
 @endsection

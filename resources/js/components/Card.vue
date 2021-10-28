@@ -3,6 +3,7 @@
         <div v-for="film in films" :key="film.id" class="col-2">
             <div class="box-image">
                 <img :src="'https://image.tmdb.org/t/p/w500/'+ film.poster_path" :alt="'poster film' + film.title">
+                
             </div>
         </div>
     </div>

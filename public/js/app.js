@@ -1949,6 +1949,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -1990,8 +1993,32 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'Show'
+  name: 'Show',
+  props: {
+    films: Array
+  },
+  data: function data() {
+    return {
+      showFilm: []
+    };
+  },
+  mounted: function mounted() {
+    this.showFilm = this.films;
+    console.log(this.showFilm);
+  }
 });
 
 /***/ }),
@@ -37701,7 +37728,11 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    [_c("Card", { attrs: { films: _vm.films } }), _vm._v(" "), _c("Show")],
+    [
+      _c("Card", { attrs: { films: _vm.films } }),
+      _vm._v(" "),
+      _c("Show", { attrs: { films: _vm.films } })
+    ],
     1
   )
 }
@@ -37727,9 +37758,30 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div")
+  return _vm._m(0)
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row align-items-center" }, [
+      _c("div", { staticClass: "col-6" }, [
+        _c("div", { staticClass: "show-image" }, [
+          _c("div", { staticClass: "img" })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-6" }, [
+        _c("div", { staticClass: "description" }, [
+          _vm._v(
+            "\n            Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia ea dolor eos nemo explicabo nesciunt error quia sint alias ipsam voluptatem cupiditate, non debitis fugiat doloremque perferendis velit facilis praesentium?\n        "
+          )
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 

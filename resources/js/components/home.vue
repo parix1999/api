@@ -1,13 +1,17 @@
 <template>
     <div>
+        <!-- Componente con le card film  -->
         <Card :films="films"/>
-        <Show />
+        <!-- Componente che mostra dentro il click della card film -->
+        <Show :films="films"
+        />
     </div>
 </template>
 
 <script>
     import Card from './Card.vue';
     import Show from './Show.vue';
+
     export default {
         name:'Home',
         components: {

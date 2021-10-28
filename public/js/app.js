@@ -1919,6 +1919,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Card',
   data: function data() {
@@ -1950,6 +1953,7 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Card_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Card.vue */ "./resources/js/components/Card.vue");
+//
 //
 //
 //
@@ -37629,16 +37633,18 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "row" },
+    { staticClass: "row justify-content-center" },
     _vm._l(_vm.films, function(film) {
-      return _c("div", { key: film.id, staticClass: "col-2" }, [
-        _c("div", { staticClass: "box-image" }, [
-          _c("img", {
-            attrs: {
-              src: "https://image.tmdb.org/t/p/w500/" + film.poster_path,
-              alt: "poster film" + film.title
-            }
-          })
+      return _c("div", { key: film.id }, [
+        _c("div", { staticClass: "col-6 col-sm-4 col-md-3 col-lg-2" }, [
+          _c("div", { staticClass: "box-image" }, [
+            _c("img", {
+              attrs: {
+                src: "https://image.tmdb.org/t/p/w500/" + film.poster_path,
+                alt: "poster film" + film.title
+              }
+            })
+          ])
         ])
       ])
     }),
@@ -37667,7 +37673,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [_c("Card")], 1)
+  return _c("Card")
 }
 var staticRenderFns = []
 render._withStripped = true

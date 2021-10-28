@@ -1925,7 +1925,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Card',
   props: {
-    films: Array
+    films: Array,
+    flag: Boolean
   }
 });
 
@@ -1954,6 +1955,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -1966,7 +1974,8 @@ __webpack_require__.r(__webpack_exports__);
     return {
       films: [],
       descriptions: [],
-      img: []
+      img: [],
+      flag: true
     };
   },
   mounted: function mounted() {
@@ -1989,6 +1998,27 @@ __webpack_require__.r(__webpack_exports__);
         _this.img.push(listaUrl);
       }
     });
+  },
+  methods: {
+    change: function change() {
+      if (this.flag == true) {
+        this.flag = false;
+      }
+    },
+    visualizzazione: function visualizzazione() {
+      if (this.flag == true) {
+        return 'visual';
+      } else {
+        return 'noVisual';
+      }
+    },
+    visualizzazioneDue: function visualizzazioneDue() {
+      if (this.flag == true) {
+        return 'noVisual';
+      } else {
+        return 'visual';
+      }
+    }
   }
 });
 
@@ -2003,6 +2033,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -37706,18 +37737,29 @@ var render = function() {
     "div",
     { staticClass: "row justify-content-center" },
     _vm._l(_vm.films, function(film) {
-      return _c("div", { key: film.id }, [
-        _c("div", { staticClass: "col-6 col-sm-4 col-md-3 col-lg-2" }, [
-          _c("div", { staticClass: "box-image" }, [
-            _c("img", {
-              attrs: {
-                src: "https://image.tmdb.org/t/p/w500/" + film.poster_path,
-                alt: "poster film" + film.title
-              }
-            })
+      return _c(
+        "div",
+        {
+          key: film.id,
+          on: {
+            click: function($event) {
+              return _vm.$emit("visualizza")
+            }
+          }
+        },
+        [
+          _c("div", { staticClass: "col-6 col-sm-4 col-md-3 col-lg-2" }, [
+            _c("div", { staticClass: "box-image" }, [
+              _c("img", {
+                attrs: {
+                  src: "https://image.tmdb.org/t/p/w500/" + film.poster_path,
+                  alt: "poster film" + film.title
+                }
+              })
+            ])
           ])
-        ])
-      ])
+        ]
+      )
     }),
     0
   )
@@ -37744,21 +37786,34 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("Card", { attrs: { films: _vm.films } }),
-      _vm._v(" "),
-      _c("Show", {
-        attrs: {
-          films: _vm.films,
-          descriptions: _vm.descriptions,
-          img: _vm.img
-        }
-      })
-    ],
-    1
-  )
+  return _c("div", [
+    _c(
+      "div",
+      { class: _vm.visualizzazione() },
+      [
+        _c("Card", {
+          attrs: { films: _vm.films, flag: _vm.flag },
+          on: { visualizza: _vm.change }
+        })
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { class: _vm.visualizzazioneDue() },
+      [
+        _c("Show", {
+          attrs: {
+            films: _vm.films,
+            descriptions: _vm.descriptions,
+            img: _vm.img
+          }
+        })
+      ],
+      1
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -37798,7 +37853,9 @@ var render = function() {
     _vm._v(" "),
     _c("div", { staticClass: "col-6" }, [
       _c("div", { staticClass: "description" }, [
-        _vm._v("\n            " + _vm._s(_vm.descriptions[0]) + "\n        ")
+        _vm._v(
+          "\n                " + _vm._s(_vm.descriptions[0]) + "\n            "
+        )
       ])
     ])
   ])

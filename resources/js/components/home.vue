@@ -1,12 +1,19 @@
 <template>
     <div>
         <!-- Componente con le card film  -->
-        <Card :films="films"/>
-        <!-- Componente che mostra dentro il click della card film -->
-        <Show :films="films"
-        :descriptions="descriptions"
-        :img="img"
-        />
+        <div :class="visualizzazione()">
+            <Card :films="films"
+            :flag="flag"
+            @visualizza="change"
+            />
+        </div>
+        <div :class="visualizzazioneDue()">
+            <!-- Componente che mostra dentro il click della card film -->
+            <Show :films="films"
+            :descriptions="descriptions"
+            :img="img"
+            />
+        </div>
     </div>
 </template>
 
@@ -25,6 +32,8 @@
                 films:[],
                 descriptions:[],
                 img:[],
+
+                flag:true,
             }
         },
         mounted() {
@@ -46,6 +55,31 @@
                 
             })            
         },
+
+        methods: {
+            change() {
+                if (this.flag == true) {
+                    this.flag = false; 
+                }
+            },
+
+            visualizzazione() {
+                if (this.flag == true) {
+                    return 'visual';
+                } else {
+                    return 'noVisual';
+                }
+            },
+
+            visualizzazioneDue() {
+                if (this.flag == true) {
+                    return 'noVisual';
+                } else {
+                    return 'visual';
+                }
+            }
+        }
+        
         
     }
 </script>

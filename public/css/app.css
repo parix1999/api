@@ -22,6 +22,14 @@
   }
 }
 
+.visual {
+  display: block;
+}
+
+.noVisual {
+  display: none;
+}
+
 .img {
   width: 400px;
   height: 500px;

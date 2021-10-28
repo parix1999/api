@@ -1,4 +1,5 @@
 <template>
+<!-- ToDo: dinamicizzare il tutto al click -->
     <div class="row align-items-center">
         <div class="col-6">
             <div class="show-image">
@@ -23,6 +24,7 @@
         name:'Show',
         props: {
             films: Array,
+
             descriptions: Array,
             img: Array
         },

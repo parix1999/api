@@ -1,15 +1,17 @@
 <template>
     <div class="container">
-        <div class="row justify-content-center">
-            ciao qui andranno tutti i fummetti marvel
-        </div>
+        <Card />
     </div>
 </template>
 
 <script>
+    import Card from './Card.vue'; 
     export default {
-        mounted() {
-            console.log('Component mounted.')
-        }
+        name:'Home',
+        components: {
+            Card
+        },
+        
+        
     }
 </script>

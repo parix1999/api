@@ -1952,6 +1952,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -1962,7 +1964,9 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      films: []
+      films: [],
+      descriptions: [],
+      img: []
     };
   },
   mounted: function mounted() {
@@ -1972,6 +1976,18 @@ __webpack_require__.r(__webpack_exports__);
       // i dati vengono presi
       // Non vanno pushati !!! 
       _this.films = response.data.results;
+
+      for (var i = 0; i < _this.films.length; i++) {
+        var element = _this.films[i].overview;
+
+        _this.descriptions.push(element);
+      }
+
+      for (var x = 0; x < _this.films.length; x++) {
+        var listaUrl = _this.films[x].poster_path;
+
+        _this.img.push(listaUrl);
+      }
     });
   }
 });
@@ -2005,18 +2021,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Show',
   props: {
-    films: Array
+    films: Array,
+    descriptions: Array,
+    img: Array
   },
   data: function data() {
     return {
-      showFilm: []
+      showFilm: this.films
     };
   },
   mounted: function mounted() {
-    this.showFilm = this.films;
     console.log(this.showFilm);
   }
 });
@@ -37731,7 +37749,13 @@ var render = function() {
     [
       _c("Card", { attrs: { films: _vm.films } }),
       _vm._v(" "),
-      _c("Show", { attrs: { films: _vm.films } })
+      _c("Show", {
+        attrs: {
+          films: _vm.films,
+          descriptions: _vm.descriptions,
+          img: _vm.img
+        }
+      })
     ],
     1
   )
@@ -37758,30 +37782,28 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row align-items-center" }, [
-      _c("div", { staticClass: "col-6" }, [
-        _c("div", { staticClass: "show-image" }, [
-          _c("div", { staticClass: "img" })
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-6" }, [
-        _c("div", { staticClass: "description" }, [
-          _vm._v(
-            "\n            Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia ea dolor eos nemo explicabo nesciunt error quia sint alias ipsam voluptatem cupiditate, non debitis fugiat doloremque perferendis velit facilis praesentium?\n        "
-          )
+  return _c("div", { staticClass: "row align-items-center" }, [
+    _c("div", { staticClass: "col-6" }, [
+      _c("div", { staticClass: "show-image" }, [
+        _c("div", { staticClass: "img" }, [
+          _c("img", {
+            attrs: {
+              src: "https://image.tmdb.org/t/p/w500/" + _vm.img[0],
+              alt: ""
+            }
+          })
         ])
       ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "col-6" }, [
+      _c("div", { staticClass: "description" }, [
+        _vm._v("\n            " + _vm._s(_vm.descriptions[0]) + "\n        ")
+      ])
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 

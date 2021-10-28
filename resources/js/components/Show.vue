@@ -2,14 +2,15 @@
     <div class="row align-items-center">
         <div class="col-6">
             <div class="show-image">
-                <!-- <img :src="this.films[0].poster_path" alt=""> -->
-                <div class="img"></div>
+                <div class="img">
+                    <img :src="'https://image.tmdb.org/t/p/w500/' + img[0]" alt="">
+                </div>
             </div>
         </div>
 
         <div class="col-6">
             <div class="description">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia ea dolor eos nemo explicabo nesciunt error quia sint alias ipsam voluptatem cupiditate, non debitis fugiat doloremque perferendis velit facilis praesentium?
+                {{ descriptions[0] }}
             </div>
         </div>
     </div>
@@ -21,15 +22,16 @@
     export default {
         name:'Show',
         props: {
-            films: Array, 
+            films: Array,
+            descriptions: Array,
+            img: Array
         },
         data() {
             return {
-                showFilm:[],
+                showFilm: this.films,
             }
         },
         mounted() {
-            this.showFilm = this.films;
             console.log(this.showFilm); 
         }
     }

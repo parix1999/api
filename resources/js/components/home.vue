@@ -4,6 +4,8 @@
         <Card :films="films"/>
         <!-- Componente che mostra dentro il click della card film -->
         <Show :films="films"
+        :descriptions="descriptions"
+        :img="img"
         />
     </div>
 </template>
@@ -21,6 +23,8 @@
         data () {
             return {
                 films:[],
+                descriptions:[],
+                img:[],
             }
         },
         mounted() {
@@ -28,6 +32,18 @@
                 // i dati vengono presi
                 // Non vanno pushati !!! 
                 this.films = response.data.results;
+
+                for (let i = 0; i < this.films.length; i++) {
+                    const element = this.films[i].overview;
+                    this.descriptions.push(element); 
+                }
+
+                for (let x = 0; x < this.films.length; x++) {
+                    const listaUrl = this.films[x].poster_path;
+                    this.img.push(listaUrl); 
+                }
+                
+                
             })            
         },
         

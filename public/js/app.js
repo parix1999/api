@@ -1922,18 +1922,17 @@ __webpack_require__.r(__webpack_exports__);
   name: 'Card',
   data: function data() {
     return {
-      films: []
+      films: [],
+      img: []
     };
   },
   mounted: function mounted() {
     var _this = this;
 
-    console.log('Component mounted.');
     axios.get('https://api.themoviedb.org/3/movie/popular?api_key=6ab3e57615f14eaaf5a85958841a5555').then(function (response) {
       // i dati vengono presi
       // Non vanno pushati !!! 
       _this.films = response.data.results;
-      console.log(_this.films);
     });
   }
 });
@@ -37633,7 +37632,12 @@ var render = function() {
     _vm._l(_vm.films, function(film) {
       return _c("div", { key: film.id, staticClass: "col-2" }, [
         _c("div", { staticClass: "box-image" }, [
-          _vm._v("\n            " + _vm._s(film.title) + "\n        ")
+          _c("img", {
+            attrs: {
+              src: "https://image.tmdb.org/t/p/w500/" + film.poster_path,
+              alt: "poster film" + film.title
+            }
+          })
         ])
       ])
     }),
